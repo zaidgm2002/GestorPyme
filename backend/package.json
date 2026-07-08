@@ -1,0 +1,29 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "engines": {
+    "node": ">=20.19 <23"
+  },
+  "scripts": {
+    "dev": "node --watch server.js",
+    "start": "node server.js",
+    "test:smoke": "node scripts/smoke-api.js",
+    "test:resend": "node scripts/test-resend.js",
+    "test:recordatorio": "node scripts/test-recordatorio.js",
+    "test:correos-estado": "node scripts/test-correos-estado.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@prisma/client": "^6.19.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "prisma": "^6.19.3",
+    "resend": "^6.17.1"
+  }
+}
