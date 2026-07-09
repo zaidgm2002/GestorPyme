@@ -26,6 +26,7 @@ Frontend:
 
 - SvelteKit
 - Svelte 5
+- SvelteKit adapter-node para deploy en Render
 - Tailwind CSS
 - Clerk
 - Chart.js / svelte-chartjs
