@@ -20,6 +20,16 @@ El proyecto esta dividido en frontend y backend separados. Esta decision esta do
 - Validaciones de backend para payloads, montos y transiciones de estado.
 - Interfaz responsive con toasts de confirmacion y error.
 
+## Alcance y Pendientes
+
+El MVP cubre la operacion principal de clientes, cotizaciones, cobranza, pagos, dashboard, autenticacion, correos transaccionales y despliegue.
+
+Quedan como mejoras planeadas para una version posterior:
+
+- Generacion y descarga de PDF de cotizaciones.
+- Reportes mensuales con exportacion CSV o Excel.
+- Preview formal del recordatorio de cobranza y limite de un recordatorio diario por cliente/cotizacion.
+
 ## Tecnologias
 
 Frontend:
