@@ -3,7 +3,7 @@ services:
     name: gestorpyme-backend
     env: node
     rootDir: backend
-    buildCommand: npm ci && npx prisma generate
+    buildCommand: npm ci && npx prisma generate && npx prisma migrate deploy
     startCommand: npm start
     envVars:
       - key: DATABASE_URL
@@ -13,6 +13,16 @@ services:
       - key: FROM_EMAIL
         sync: false
       - key: FRONTEND_URL
+        sync: false
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: ANTHROPIC_MODEL
+        value: claude-sonnet-4-6
+      - key: TAVUS_API_KEY
+        sync: false
+      - key: TAVUS_PAL_ID
+        sync: false
+      - key: TAVUS_FACE_ID
         sync: false
 
   - type: web

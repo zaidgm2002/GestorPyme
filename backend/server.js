@@ -20,6 +20,8 @@ app.use('/api/cotizaciones', require('./routes/cotizaciones'));
 app.use('/api/pagos', require('./routes/pagos'));
 app.use('/api/cobranza', require('./routes/cobranza'));
 app.use('/api/dashboard', require('./routes/dashboard'));
+app.use('/api/asistente', require('./routes/asistente'));
+app.use('/api/tavus', require('./routes/tavus'));
 
 // Health check
 app.get('/health', (req, res) => {

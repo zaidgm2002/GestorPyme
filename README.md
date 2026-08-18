@@ -17,6 +17,7 @@ El proyecto esta dividido en frontend y backend separados. Esta decision esta do
 - Dashboard con metricas y graficas.
 - Cobranza con cartera pendiente y recordatorios por correo.
 - Correos con Resend para cotizacion enviada, aprobada, facturada y recordatorio de pago.
+- Asistente virtual por video con Tavus, integrado como modulo de orientacion de solo lectura.
 - Validaciones de backend para payloads, montos y transiciones de estado.
 - Interfaz responsive con toasts de confirmacion y error.
 
@@ -67,6 +68,8 @@ GestorPyme/
 - Proyecto de Supabase con PostgreSQL
 - Proyecto de Clerk
 - API key de Resend
+- API key de Anthropic para el asistente Claude
+- Cuenta de Tavus con API key, persona y replica para el asistente por video
 
 ## Variables de Entorno
 
@@ -85,7 +88,15 @@ DATABASE_URL="postgresql://postgres.[project-ref]:[password]@aws-0-us-east-1.poo
 FRONTEND_URL="http://localhost:5173"
 RESEND_API_KEY="re_..."
 FROM_EMAIL="onboarding@resend.dev"
+ANTHROPIC_API_KEY="sk-ant-..."
+ANTHROPIC_MODEL="claude-sonnet-4-6"
+TAVUS_API_KEY="tavus_..."
+TAVUS_PAL_ID="p..."
+TAVUS_FACE_ID="r..."
 ```
+
+Las instrucciones del asistente se editan en `backend/prompts/assistant-system.md`.
+La clave de Anthropic solo se configura en el backend; nunca debe exponerse como variable `PUBLIC_*`.
 
 Notas:
 
@@ -118,6 +129,14 @@ Generar Prisma Client:
 ```sh
 npx prisma generate --schema backend/prisma/schema.prisma
 ```
+
+Aplicar migraciones pendientes:
+
+```sh
+npx prisma migrate deploy --schema backend/prisma/schema.prisma
+```
+
+Las migraciones son aditivas y Render las aplica durante el build del backend.
 
 ## Desarrollo Local
 
@@ -159,6 +178,7 @@ npm run test:smoke --prefix backend
 npm run test:resend --prefix backend
 npm run test:recordatorio --prefix backend
 npm run test:correos-estado --prefix backend
+npm run test:tavus --prefix backend
 ```
 
 Frontend:
@@ -200,6 +220,12 @@ Dashboard y cobranza:
 - `GET /api/dashboard`
 - `GET /api/cobranza`
 - `POST /api/cobranza/:id/recordatorio`
+
+Asistentes:
+
+- `POST /api/asistente`
+- `POST /api/tavus/conversations`
+- `POST /api/tavus/conversations/:id/end`
 
 Health:
 
@@ -256,6 +282,11 @@ Backend:
 - `RESEND_API_KEY`
 - `FROM_EMAIL`
 - `FRONTEND_URL`
+- `ANTHROPIC_API_KEY`
+- `ANTHROPIC_MODEL` (opcional)
+- `TAVUS_API_KEY`
+- `TAVUS_PAL_ID`
+- `TAVUS_FACE_ID`
 
 Frontend:
 

@@ -3,6 +3,8 @@
 	import { PUBLIC_CLERK_PUBLISHABLE_KEY } from '$env/static/public';
 	import { page } from '$app/stores';
 	import ToastHost from '$lib/ToastHost.svelte';
+	import AssistantChat from '$lib/AssistantChat.svelte';
+	import VideoAssistantCall from '$lib/VideoAssistantCall.svelte';
 	import {
 		ClerkLoaded,
 		ClerkProvider,
@@ -21,7 +23,8 @@
 		{ href: '/dashboard', label: 'Dashboard', mark: 'D' },
 		{ href: '/clientes', label: 'Clientes', mark: 'C' },
 		{ href: '/cotizaciones', label: 'Cotizaciones', mark: 'Q' },
-		{ href: '/cobranza', label: 'Cobranza', mark: '$' }
+		{ href: '/cobranza', label: 'Cobranza', mark: '$' },
+		{ href: '/asistente-video', label: 'Asistente virtual', mark: 'AI' }
 	];
 	let activeItem = $derived(navItems.find((item) => $page.url.pathname.startsWith(item.href)));
 </script>
@@ -157,6 +160,8 @@
 					</div>
 				</div>
 				<ToastHost />
+				<AssistantChat />
+				<VideoAssistantCall />
 			</Show>
 		{/if}
 	</ClerkLoaded>
