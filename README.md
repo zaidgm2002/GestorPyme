@@ -4,6 +4,14 @@ Sistema de gestion para una pyme, construido como proyecto academico para la mat
 
 El proyecto esta dividido en frontend y backend separados. Esta decision esta documentada en [`docs/arquitectura.md`](docs/arquitectura.md).
 
+## Acceso en Produccion
+
+- Aplicacion web: [gestorpyme-frontend-zaid.onrender.com](https://gestorpyme-frontend-zaid.onrender.com)
+- API backend: [gestorpyme-backend.onrender.com](https://gestorpyme-backend.onrender.com)
+- Documentacion de la integracion: [Reporte tecnico de integracion de Tavus](docs/reporte-tecnico-tavus.pdf)
+
+> Los servicios utilizan el plan gratuito de Render, por lo que la primera solicitud despues de un periodo de inactividad puede tardar algunos segundos.
+
 ## Funcionalidad Principal
 
 - Autenticacion con Clerk.
